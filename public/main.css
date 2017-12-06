@@ -12,9 +12,38 @@ body{
 
 .prompt{
   display: flex;
-  font: 'Cantata one';
   font-style: italic;
   align-self: center;
+  font-size: 3em;
   position: absolute;
 
+
 }
+.ui-page.ui-page-theme-a .ui-page-active{
+  width:100vw;
+  margin:0px;
+  padding:0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-pagecontainer, .ui-mobile-viewport, .ui-overlay-a {
+  width:100vw;
+  margin:0px;
+  padding:0px;
+}
+
+.ui-loader {
+  display: none;
+}
+
+html, body { padding: 0; margin: 0; }
+  html, .ui-mobile, .ui-mobile body {
+    height: 100vh;
+    width: 100vw;
+  }
+  .ui-mobile, .ui-mobile .ui-page {
+    height: 100vh;
+    width: 100vw;
+  }

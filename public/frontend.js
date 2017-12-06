@@ -4,13 +4,15 @@ var randFont;
 var randColor;
 var randNum = randNumber();
 
-
 //store the mouse click place in a global so we can use it to append the text too.
 socket.on('connect', function(data){
-  console.log("we connected to the server as" + socket.id)
+  // console.log("we connected to the server as" + socket.id)
 })
 
-
+// $( document ).on( "mobileinit", function() {
+//   $.mobile.height = '100vh',
+//   $.mobile.width = '100vw',
+// });
     //when we call this function, return bcak a random color in rgb notation
     //0 -255 is our range through r, g, and b
     //rgb (255, 255, 255) desired outcome
@@ -36,7 +38,6 @@ var fontType = [];
   fontType [8]= 'Gentium Basic';
   fontType [9]= 'Cantata One';
 
-
 function randNumber(){
   return Math.floor(Math.random() * 9)
 }
@@ -59,7 +60,6 @@ $('body').click(function(event){
    }
 
 })
-
 
 $('.movableText').keypress(function(event){
   //detect keypresses
@@ -84,19 +84,36 @@ randColor = rgb; //randomize this.
       "color":randColor
     }
 
-
     socket.emit('textWasEntered',textData) //send the textData to the server
-
 
   } //close the ckeck for the enter key
 
 })
 
 
+//---------------------------------------------------------------
+
+// var para = document.querySelector('.movableText');
+// var mql = window.matchMedia('(max-width: 1000px)');
+//
+// function screenTest(e) {
+//   if (e.matches) {
+//     /* the viewport is 600 pixels wide or less */
+//     // para.textContent = 'This is a narrow screen — less than 600px wide.';
+//   } else {
+//     /* the viewport is more than than 600 pixels wide */
+//     // para.textContent = 'This is a wide screen — more than 600px wide.';
+//     document.body.style.backgroundColor = 'blue';
+//   }
+// }
+//
+// mql.addListener(screenTest);
+
+//----------------------------------------------------------------
+
 //wait for a message from the server that anyone made a new text entry
 socket.on("rerouteTextEntry",function(textData){
   console.log(textData);
-
 
       $("<div class = 'convers'>" + textData.text + "</div>").css(textData.position).css("font-family",  textData.font).css('color',textData.color).appendTo('body');
 })
